@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+	 
+	 <!-- 
+	 	여기서 설정하는 내용은 setting 과 typeHandlers 이다.
+	 	setting은 런타임시 mybatis의 행위를 조정하기 위한 설정 내용이며,
+	 	typeHandlers는 result 값을 가져올 때마다 자바 타입으로 형변환하여 가져올 수 있게 해주는 설정이다.
+	 	typeHandlers 값은 게시판 내 작성일을 입력해 주기 위한 내용이다. 
+	 -->
+	 
+	<configuration>
+	    <settings>  
+	        <setting name="cacheEnabled"              value="true"/>  
+	        <setting name="lazyLoadingEnabled"        value="false"/>  
+	        <setting name="multipleResultSetsEnabled" value="true"/>  
+	        <setting name="useColumnLabel"            value="true"/>  
+	        <setting name="useGeneratedKeys"          value="false"/>  
+	        <setting name="defaultExecutorType"      value="SIMPLE"/>  
+	        <setting name="defaultStatementTimeout"  value="25000"/>  
+	    </settings>
+	 
+	    <typeHandlers>
+	        <!--  java.sql.Timestamp 를 java.util.Date 형으로 반환 -->
+	        <typeHandler javaType="java.sql.Timestamp" handler="org.apache.ibatis.type.DateTypeHandler"/>
+	        <typeHandler javaType="java.sql.Time"      handler="org.apache.ibatis.type.DateTypeHandler"/>
+	        <typeHandler javaType="java.sql.Date"      handler="org.apache.ibatis.type.DateTypeHandler"/>
+	    </typeHandlers>
+</configuration>
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.1.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+ 
+ 	<!--  
+ 		데이터베이스 연결정보를 가져와 접속하는 dataSource를 가져 옵니다.
+ 		context-dataSource.xml 파일에서 해당 내용(DB접속)을 dataSource로 설정해 두었다.
+ 		이 값을 ref=""를 통해 불러 왔다.
+ 		그리고 마이바티스 설정 값의 경로를 지정하여 불러왔다.
+ 		
+ 		java 파일이 있는 곳을 지정.
+ 	-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" 
+        	value="classpath:config/spring/context/mybatis-config-base.xml" />
+        <!--  
+        	쿼리 매핑 설정
+        	list를 사용한 이유는 설정 파일 여러개가 여러 경로에 있을경우 추가해 주기 위함
+        	단일 경로에 있는 매핑 파일을 불러올 경우에는 다음과 같이 처리해도 된다.
+        -->
+		<!--         <property name="mapperLocations" value="classpath*:org/board/**/dao/*Mapper.xml" /> -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:db/mysql/mapper/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- sqlSession 생성 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+    
+    
+	<!--  
+		매퍼 스캔은 하나씩 매퍼를 모드 등록할 필요 없이 클래스 패스를 지정해서 해당 매퍼를 자동으로 연결해 주는 기능이다.
+		해당 패키지는 자바 소스들이 들어있는 org.spring.test로 지정하였다.
+		그리고 @repository 어노테이션을 자동으로 잡을 수 있도록 설정했다.
+	-->
+    <!-- scan for mappers and let them be autowired -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.spring.board" />
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+    </bean>
+</beans>
