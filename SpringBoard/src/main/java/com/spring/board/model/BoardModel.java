@@ -10,7 +10,6 @@ public class BoardModel {
 	String userName;
 	Date regDatetime;
 	int cnt;
-	
 	public int getIdx() {
 		return idx;
 	}
@@ -35,18 +34,17 @@ public class BoardModel {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-	public int getCnt() {
-		return cnt;
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
-	}
 	public Date getRegDatetime() {
 		return regDatetime;
 	}
 	public void setRegDatetime(Date regDatetime) {
 		this.regDatetime = regDatetime;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	
 	
