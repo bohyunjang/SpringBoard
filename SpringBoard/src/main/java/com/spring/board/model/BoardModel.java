@@ -1,6 +1,6 @@
 package com.spring.board.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class BoardModel {
 	
@@ -35,17 +35,18 @@ public class BoardModel {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Date getRegDatetime() {
-		return regDatetime;
-	}
-	public void setRegDatetime(Date regDatetime) {
-		this.regDatetime = regDatetime;
-	}
+	
 	public int getCnt() {
 		return cnt;
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	public Date getRegDatetime() {
+		return regDatetime;
+	}
+	public void setRegDatetime(Date regDatetime) {
+		this.regDatetime = regDatetime;
 	}
 	
 	
