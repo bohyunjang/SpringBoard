@@ -18,4 +18,6 @@ public interface BoardService {
 	
 	public void update(BoardModel boardModel, int idx);
 	
+	public void updateCnt(BoardModel boardModel, int idx);
+	
 }

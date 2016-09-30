@@ -3,7 +3,9 @@ package com.spring.board.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.junit.runner.Request;
 import org.omg.CORBA.BAD_INV_ORDER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,10 +40,17 @@ public class BoardController {
 	public String BoardView(@PathVariable int idx, Model model){
 		
 		System.out.println("boardView Controller..");
+		
 		BoardModel boardModel = this.boardService.selectOne(idx);
-		model.addAttribute("board", boardModel);
+		
+		//뷰페이지에 출력되는 cnt값은 증가하지 않기 때문에 setCnt 를 통해 증가시켜준다.
+		boardModel.setCnt(boardModel.getCnt()+1);
+		// DB에 저장되는 cnt 값을 +1 시켜준다.
+		boardService.updateCnt(boardModel, idx);
+		
 		// jsp 화면에서 뿌려질때 어떤 이름의 객체로 뿌려줄것인지 설정
 		// model.addAttribute("객체명", db에서 받아온 객체);
+		model.addAttribute("board", boardModel);
 		
 		return "board_view";
 	}
@@ -81,10 +90,6 @@ public class BoardController {
 		
 		return "redirect:/";
 	}
-
-	
-	
-	
 	
 	@RequestMapping(value="/write_move",method=RequestMethod.GET)
 	public String moveBoardWrite(@RequestParam(value="idx", defaultValue="0") int idx){
@@ -93,10 +98,14 @@ public class BoardController {
 		return "board_write";
 	}
 	
-	@RequestMapping(value="/update_move",method=RequestMethod.GET)
-	public String moveBoardUpdate(@RequestParam(value="idx", defaultValue="0")int idx){
+	@RequestMapping(value="/update_action",method=RequestMethod.GET)
+	public String moveBoardUpdate(Model model,@RequestParam(value="idx", defaultValue="0")int idx
+			){
 		
 		System.out.println("boardController... move update...");
+		
+		BoardModel boardModel = this.boardService.selectOne(idx);
+		model.addAttribute("board", boardModel);
 		
 		return "board_update";
 	}
