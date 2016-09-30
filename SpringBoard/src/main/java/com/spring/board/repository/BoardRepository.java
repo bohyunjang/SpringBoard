@@ -17,5 +17,7 @@ public interface BoardRepository {
 	void update(BoardModel boardModel, int idx);
 
 	void delete(int idx);
+	
+	void updateCnt(BoardModel boardModel, int idx);
 
 }
