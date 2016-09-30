@@ -62,13 +62,5 @@ public class BoardServiceImpl implements BoardService{
 		System.out.println("boardService... boardView..");
 		return this.boardRepository.selectOne(idx);
 	}
-
-	@Override
-	public void updateCnt(BoardModel boardModel, int idx) {
-		// TODO Auto-generated method stub
-		System.out.println("boardService... boardUpdateCnt");
-		
-		this.boardRepository.updateCnt(boardModel, idx);
-	}
 	
 }

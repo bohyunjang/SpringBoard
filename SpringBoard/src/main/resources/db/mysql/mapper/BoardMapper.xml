@@ -43,13 +43,6 @@
     <delete id="delete">
          DELETE FROM board WHERE idx = #{idx}
     </delete>
-
- 	<update id="updateCnt">
-		UPDATE board SET
-			cnt = cnt+1
-		WHERE idx = #{idx} LIMIT 1
- 	</update>
- 
  
  
 </mapper>

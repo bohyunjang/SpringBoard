@@ -70,14 +70,6 @@ public class BoardRepositoryImpl implements BoardRepository{
 		this.sqlSession.delete("BoardMapper.delete", idx);
 	}
 
-	@Override
-	public void updateCnt(BoardModel boardModel, int idx) {
-		// TODO Auto-generated method stub
-		System.out.println("boardCnt Update...");
-		
-		this.sqlSession.update("BoardMapper.updateCnt", idx);
-	}
-
 	
 	
 }

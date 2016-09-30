@@ -82,7 +82,7 @@ body {
 								<hr size="1">
 								<div align="center">
 									[ <input type="button" value="목록"	onclick="move('./');"> | 
-									  <input type="button" value="수정" onclick="move('./update_action')">|
+									  <input type="button" value="수정" onclick="move('./update_move')">|
 									<!-- <input type="button" value="답변" onclick="move('Board_Reply.jsp');"> | -->
 									  <input type="button" value="삭제" onclick="boardDelete()"> ] <br>
 								</div>
