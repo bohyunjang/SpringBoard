@@ -4,33 +4,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>스프링 게시판 view</title>
-<script type="text/javascript">
-function del(){
-	if(confirm("삭제하시겠습니까?")) document.form.submit();
+<title>게시판 수정하기</title>
+
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+	font-family: 'Nanum Gothic', sans-serif;
 }
+</style>
+
+<script type="text/javascript">
+	function move(url) {
+		location.href = url;
+	}
+	function boardUpdateCheck() {
+		var form = document.BoardUpdateForm;
+		return true;
+	}
 </script>
+
 </head>
 <body>
-	<form id="form"name="form"method="post"action="./delete">
-		<input type = "hidden" id="seq" name="idx" value="${board.seq}">
+	<form id="form"name="form"method="post"action="./update">
+		<input type = "hidden" id="idx" name="idx" value="${board.idx}">
 	</form>
 	
 	<table width=300 border=1 cellspacing=0 cellpadding=5>
-	<tr><td><b>인덱스</b></td><td>${board.seq }</td></tr>
-	<tr><td><b>제목</b></td><td>${board.subject}</td></tr>
-	<tr><td><b>작성자</b></td><td>${board.subject}</td></tr>
-	<tr><td><b>작성시간</b></td><td>${board.reg_datetime }</td></tr>
-	<tr><td><b>조회수</b></td><td>${board.cnt }</td></tr>
-	<tr><td><b>내용</b></td><td><textarea>${board.content }</textarea></td></tr>
+	<caption>게시판 수정</caption>
+				<tr>
+					<td>제 목</td>
+					<td><input type="text" name="title" value="${board.title }"
+						size=30></td>
+				</tr>
+				<tr>
+					<td>작성자</td>
+					<td><input type="text" name="userName"
+						value="${board.userName }" size=10 maxlength="8"></td>
+				</tr>
+				<tr>
+				<td>내 용</td>
+				<td><textarea id="content" name="content" cols="30">${board.content}</textarea></td>
+				</tr>
+				<!-- <tr>
+					<td>비밀번호</td>
+					<td><input type="password" name=password size=15 maxlength="15"></td>
+				</tr>  <tr>
+					<td >작성시간</td>
+					<td><input type="text" name=name value="${boards.reg_datetime }" size=10 maxlength="8"></td>
+				</tr>
+				<tr>
+					<td >조회수</td>
+					<td><input type="text" name="cnt" value="${boards.cnt }" size=10 maxlength="8"></td>
+				</tr> -->
+
 	</table>
 	
 	<table width=700 >
-		<tr><td>
-		<input type="button" value="삭제" onclick="location.href='./delete'">
-		<input type="button" value="수정" onclick="location.href='./move_update'">
-		<input type="button" value="목록" onclick="location.href='./'">	
-		</td></tr>
+		<tr><td><div align="left">
+		<!-- <input type="button" value="초기화" onclick="location.href="> -->
+		<input type="submit" value="수정" />
+		<input type="button" value="뒤로가기" onclick="move('./')">	
+		</div></td></tr>
 	</table>
 </body>
 </html>

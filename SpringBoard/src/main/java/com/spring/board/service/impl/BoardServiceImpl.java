@@ -17,28 +17,33 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public List<BoardModel> getList() {
-		// TODO Auto-generated meth od stub
-		
+		// TODO Auto-generated method stub
 		System.out.println("boardService.... getList");
-		List<BoardModel> list = this.boardRepository.selectList();
 		
-		/*return this.boardRepository.getList();*/
-		System.out.println("lst??:"+list);
-		return list;
+		return this.boardRepository.selectList();
 	}
-
+	
 	@Override
 	public void insert(BoardModel boardModel) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("boardService... boardInsert..");
+
 		this.boardRepository.insert(boardModel);
+	}
+	
+	
+	@Override
+	public int selectIdx() {
+		// TODO Auto-generated method stub
+		System.out.println("boardService... selectIdx...");
 		
+		return this.boardRepository.selectIdx();
 	}
 
 	@Override
-	public void delete(BoardModel boardModel, int idx) {
+	public void delete(int idx) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("boardService... boardDelete..");
 		this.boardRepository.delete(idx);
 	}
 
@@ -46,8 +51,16 @@ public class BoardServiceImpl implements BoardService{
 	public void update(BoardModel boardModel, int idx) {
 		// TODO Auto-generated method stub
 		
-		this.boardRepository.update(boardModel);
+		System.out.println("boardService... boardUpdate..");
+		this.boardRepository.update(boardModel,idx);
 	}
 
+	@Override
+	public BoardModel selectOne(int idx) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("boardService... boardView..");
+		return this.boardRepository.selectOne(idx);
+	}
 	
 }
