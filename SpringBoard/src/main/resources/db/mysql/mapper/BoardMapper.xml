@@ -6,43 +6,11 @@
 <mapper namespace="BoardMapper">
  
     <resultMap id="boardMap" type="com.spring.board.model.BoardModel">
-        <id property="idx"	column="idx" />
-        <id property="title"	column="title" />
-        <id property="content"	column="content" />
-        <id property="userName"	column="userName" />
-        <id property="regDatetime"	column="regDatetime" />
-        <id property="cnt"	column="cnt" />
+        <id property="idx"            column="idx" />
     </resultMap>
  
     <select id="selectList" resultMap="boardMap">
         SELECT  * FROM board
     </select>
-    
-    <insert id="insert">
-         INSERT INTO board(idx,title,content,username,regdatetime,cnt)
-         VALUES(#{idx}, #{title}, #{content},#{userName},sysdate(),0) 
-    </insert>
-    
-    <select id="selectOne" resultMap="boardMap">
-    	    SELECT  * FROM board WHERE idx = #{idx}
-    </select>
-    
-    <select id="selectIdx" resultType="int">
-    	SELECT count(idx) from board
-    </select>
-    
-     <update id="update">
-         UPDATE board SET
-              username = #{username},
-              title = #{title},
-              content = #{content},
-              regdatetime = #{regdatetime}
-         WHERE idx = #{idx} LIMIT 1
-    </update>
- 
-    <delete id="delete">
-         DELETE FROM board WHERE idx = #{idx}
-    </delete>
- 
  
 </mapper>

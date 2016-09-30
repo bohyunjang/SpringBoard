@@ -10,11 +10,11 @@ public interface BoardRepository {
 
 	BoardModel selectOne(int idx);
 
-	int selectIdx();
+	int seqMax();
 
 	void insert(BoardModel boardModel);
 
-	void update(BoardModel boardModel, int idx);
+	void update(BoardModel boardModel);
 
 	void delete(int idx);
 

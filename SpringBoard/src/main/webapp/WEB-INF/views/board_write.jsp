@@ -25,6 +25,7 @@ body {
 </script>
 </head>
 <body>
+
 	<table summary="글쓰기 전체 테이블">
 		<form id="form" method="post" action="./write">
 			<colgroup>
@@ -36,17 +37,16 @@ body {
 				<caption>게시판 글쓰기</caption>
 				<tr>
 					<td>제 목</td>
-					<td><input type="text" name="title" value="${board.title }"
+					<td><input type="text" name="title" value="${board.subject }"
 						size=30></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="userName"
-						value="${board.userName }" size=10 maxlength="8"></td>
+					<td><input type="text" name="user_name"
+						value="${board.user_name }" size=10 maxlength="8"></td>
 				</tr>
-				<tr>
 				<td>내 용</td>
-				<td><textarea id="content" name="content" cols="30">${board.content}</textarea></td>
+				<td><textarea id="content" name="content" row="1000" cols="30">${board.content}</textarea></td>
 				</tr>
 				<!-- <tr>
 					<td>비밀번호</td>
@@ -68,10 +68,10 @@ body {
 							<input type="submit" value="저장" />
 							<!-- <input type="button" value="뒤로" onclick="move('./');"> -->
 							<input type="button" value="뒤로" onclick="move('./')">
-					</div></td>
+						</div></td>
 				</tr>
 			</table>
-			</form>
+	</form>
 	</table>
 </body>
 </html>
