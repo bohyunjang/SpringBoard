@@ -31,7 +31,7 @@ body {
 <body>
 	<!-- table summary가 폼보다 먼저 올라오는 경우와 폼이 먼저호는 경우가 다른가? -->
 	<form id="form"name="form" method="post" action="./delete">
-	<input type = "hidden" id="seq" name="seq" value="${board.seq}">
+	<input type = "hidden" id="idx" name="idx" value="${board.idx}">
 	</form>
 		<table summary="전체 테이블 구성">
 			<tr>
@@ -50,7 +50,7 @@ body {
 								<table border="2" summary="목록 테이블 구성">
 									<tr>
 										<td align="center" bgcolor="#dddddd" width="40%">인덱스</td>
-										<td bgcolor="#ffffe8" colspan="3">${board.seq}</td>
+										<td bgcolor="#ffffe8" colspan="3">${board.idx}</td>
 									</tr>
 									<tr>
 										<td align="center" bgcolor="#dddddd">제 목</td>
@@ -58,9 +58,9 @@ body {
 									</tr>
 									<tr>
 										<td align="center" bgcolor="#dddddd" width="30%">작성자</td>
-										<td bgcolor="#ffffe8" width="40%">${board.user_name }</td>
+										<td bgcolor="#ffffe8" width="40%">${board.userName }</td>
 										<td align="center" bgcolor="#dddddd" width="75%">작성일</td>
-										<td bgcolor="#ffffe8" width="40%">${board.reg_datetime }</td>
+										<td bgcolor="#ffffe8" width="40%">${board.regDatetime }</td>
 									</tr>
 <!-- 									<tr>
 										<td align="center" bgcolor="#dddddd">E-mail</td>
@@ -82,7 +82,7 @@ body {
 								<hr size="1">
 								<div align="center">
 									[ <input type="button" value="목록"	onclick="move('./');"> | 
-									  <input type="button" value="수정" onclick="move('./update_move')">|
+									  <input type="button" value="수정" onclick="move('./update_action')">|
 									<!-- <input type="button" value="답변" onclick="move('Board_Reply.jsp');"> | -->
 									  <input type="button" value="삭제" onclick="boardDelete()"> ] <br>
 								</div>
