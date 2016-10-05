@@ -10,6 +10,7 @@ public class BoardModel {
 	String userName;
 	Date regDatetime;
 	int cnt;
+	
 	public int getIdx() {
 		return idx;
 	}

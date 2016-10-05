@@ -1,11 +1,18 @@
-package com.spring.board.service.impl;
+ package com.spring.board.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.board.model.BoardModel;
+import com.spring.board.model.BoardSearchModel;
 import com.spring.board.repository.BoardRepository;
 import com.spring.board.service.BoardService;
 
@@ -23,6 +30,7 @@ public class BoardServiceImpl implements BoardService{
 		return this.boardRepository.selectList();
 	}
 	
+
 	@Override
 	public void insert(BoardModel boardModel) {
 		// TODO Auto-generated method stub
@@ -70,5 +78,24 @@ public class BoardServiceImpl implements BoardService{
 		
 		this.boardRepository.updateCnt(boardModel, idx);
 	}
-	
+
+
+	@Override
+	public List<BoardModel> search(BoardSearchModel boardSearchModel) {
+		// TODO Auto-generated method stub
+		System.out.println("boardService... boardSearch..");
+		
+		System.out.println("searchType:: "+boardSearchModel.getSearchType());
+		System.out.println("searchValue:: "+boardSearchModel.getSearchValue());		
+		
+		return this.boardRepository.search(boardSearchModel);
+	}
+
+
+/*	@Override
+	public List<BoardSearchModel> search(Object obj) {
+		// TODO Auto-generated method stub
+		return this.boardRepository.search(obj);
+	}
+*/
 }

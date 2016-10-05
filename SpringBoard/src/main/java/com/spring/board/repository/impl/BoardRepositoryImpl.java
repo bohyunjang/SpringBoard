@@ -1,6 +1,7 @@
 package com.spring.board.repository.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -8,9 +9,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.support.BooleanTypedValue;
 import org.springframework.stereotype.Repository;
 
 import com.spring.board.model.BoardModel;
+import com.spring.board.model.BoardSearchModel;
 import com.spring.board.repository.BoardRepository;
 
 import db.mysql.mapper.BoardMapper;
@@ -47,6 +50,19 @@ public class BoardRepositoryImpl implements BoardRepository{
 	}
 
 	@Override
+	public List<BoardModel> search(BoardSearchModel searchModel) {
+		// TODO Auto-generated method stub
+		
+		if(searchModel!=null){
+			System.out.println("boardRepository... boardSearch.");
+		}
+		
+		List<BoardModel> searchList = this.sqlSession.selectList("BoardMapper.search", searchModel);
+		
+		return searchList;
+	}
+	
+	@Override
 	public BoardModel selectOne(int idx) {
 		// TODO Auto-generated method stub
 		System.out.println("boardRepositoryImpl... selectOne...");
@@ -77,6 +93,8 @@ public class BoardRepositoryImpl implements BoardRepository{
 		
 		this.sqlSession.update("BoardMapper.updateCnt", idx);
 	}
+
+
 
 	
 	
